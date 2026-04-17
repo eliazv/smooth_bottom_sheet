@@ -89,6 +89,30 @@ class _ExampleHomePageState extends State<_ExampleHomePage> {
     );
   }
 
+  void _openScrollableSheet() {
+    showSmoothBottomSheet<void>(
+      context: context,
+      title: 'Scrollable sheet',
+      subtitle: 'Long content, capped at 80% height',
+      scrollable: true,
+      showHandle: true,
+      maxHeightFactor: 0.8,
+      child: _LongContent(),
+    );
+  }
+
+  void _openGradientHeaderSheet() {
+    showSmoothBottomSheet<void>(
+      context: context,
+      title: 'Gradient header',
+      subtitle: 'Content scrolls under the faded header',
+      gradientHeader: true,
+      showHandle: true,
+      maxHeightFactor: 0.8,
+      child: _LongContent(),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -100,21 +124,116 @@ class _ExampleHomePageState extends State<_ExampleHomePage> {
             padding: const EdgeInsets.all(24),
             child: Column(
               mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
+                _SectionLabel('Standard'),
+                const SizedBox(height: 8),
                 FilledButton.tonal(
                   onPressed: _openDefaultSheet,
-                  child: const Text('Open default sheet'),
+                  child: const Text('Default sheet'),
                 ),
-                const SizedBox(height: 12),
-                FilledButton(
+                const SizedBox(height: 8),
+                FilledButton.tonal(
                   onPressed: _openCustomizedSheet,
-                  child: const Text('Open customized sheet'),
+                  child: const Text('Customized (theme + controller)'),
+                ),
+                const SizedBox(height: 20),
+                _SectionLabel('Scrollable content'),
+                const SizedBox(height: 8),
+                FilledButton(
+                  onPressed: _openScrollableSheet,
+                  child: const Text('Scrollable — 80% height'),
+                ),
+                const SizedBox(height: 8),
+                FilledButton(
+                  onPressed: _openGradientHeaderSheet,
+                  child: const Text('Gradient header — content scrolls under'),
                 ),
               ],
             ),
           ),
         ),
       ),
+    );
+  }
+}
+
+class _SectionLabel extends StatelessWidget {
+  final String text;
+  const _SectionLabel(this.text);
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      text.toUpperCase(),
+      style: Theme.of(context).textTheme.labelSmall?.copyWith(
+        letterSpacing: 1.2,
+        fontWeight: FontWeight.w700,
+        color: Theme.of(context).colorScheme.primary,
+      ),
+    );
+  }
+}
+
+class _LongContent extends StatelessWidget {
+  const _LongContent();
+
+  @override
+  Widget build(BuildContext context) {
+    final color = Theme.of(context).colorScheme.primary;
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        for (int i = 1; i <= 14; i++) ...[
+          Container(
+            padding: const EdgeInsets.all(16),
+            decoration: BoxDecoration(
+              color: color.withValues(alpha: 0.06),
+              borderRadius: BorderRadius.circular(14),
+              border: Border.all(color: color.withValues(alpha: 0.12)),
+            ),
+            child: Row(
+              children: [
+                Container(
+                  width: 36,
+                  height: 36,
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                    color: color.withValues(alpha: 0.14),
+                    shape: BoxShape.circle,
+                  ),
+                  child: Text(
+                    '$i',
+                    style: TextStyle(
+                      color: color,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 14),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Item $i',
+                        style: const TextStyle(fontWeight: FontWeight.w600),
+                      ),
+                      const SizedBox(height: 2),
+                      Text(
+                        'Scroll up — watch this item slide under the gradient header.',
+                        style: Theme.of(context).textTheme.bodySmall,
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+          if (i < 14) const SizedBox(height: 10),
+        ],
+        const SizedBox(height: 8),
+      ],
     );
   }
 }

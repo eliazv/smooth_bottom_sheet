@@ -26,21 +26,28 @@ class SmoothBottomSheetTheme {
   });
 
   factory SmoothBottomSheetTheme.light() {
-    return const SmoothBottomSheetTheme(
-      startColor: Color(0xFF1C1C1C),
-      endColor: Color(0xFF0A0A0A),
-      borderColor: Color(0x1AFFFFFF),
-      handleColor: Color(0x66FFFFFF),
-      closeButtonBackgroundColor: Color(0x1AFFFFFF),
-      closeButtonIconColor: Color(0xFFFFFFFF),
-      shadows: [],
-      titleTextStyle: TextStyle(
-        color: Color(0xFFFFFFFF),
+    return SmoothBottomSheetTheme(
+      startColor: const Color(0xFFFFFFFF),
+      endColor: const Color(0xFFF5F5F7),
+      borderColor: const Color(0x1A000000),
+      handleColor: const Color(0x4D000000),
+      closeButtonBackgroundColor: const Color(0x0F000000),
+      closeButtonIconColor: const Color(0xFF1C1C1E),
+      shadows: [
+        BoxShadow(
+          color: Colors.black.withValues(alpha: 0.08),
+          blurRadius: 20,
+          spreadRadius: 2,
+          offset: const Offset(0, -4),
+        ),
+      ],
+      titleTextStyle: const TextStyle(
+        color: Color(0xFF1C1C1E),
         fontSize: 22,
         fontWeight: FontWeight.bold,
       ),
-      subtitleTextStyle: TextStyle(
-        color: Color(0xB3FFFFFF),
+      subtitleTextStyle: const TextStyle(
+        color: Color(0x993C3C43),
         fontSize: 14,
         fontWeight: FontWeight.w500,
       ),
@@ -48,11 +55,39 @@ class SmoothBottomSheetTheme {
   }
 
   factory SmoothBottomSheetTheme.dark() {
-    return SmoothBottomSheetTheme.light();
+    return SmoothBottomSheetTheme(
+      startColor: const Color(0xFF1C1C1C),
+      endColor: const Color(0xFF0A0A0A),
+      borderColor: const Color(0x1AFFFFFF),
+      handleColor: const Color(0x66FFFFFF),
+      closeButtonBackgroundColor: const Color(0x1AFFFFFF),
+      closeButtonIconColor: const Color(0xFFFFFFFF),
+      shadows: [
+        BoxShadow(
+          color: Colors.black.withValues(alpha: 0.4),
+          blurRadius: 20,
+          spreadRadius: 2,
+          offset: const Offset(0, -4),
+        ),
+      ],
+      titleTextStyle: const TextStyle(
+        color: Color(0xFFFFFFFF),
+        fontSize: 22,
+        fontWeight: FontWeight.bold,
+      ),
+      subtitleTextStyle: const TextStyle(
+        color: Color(0xB3FFFFFF),
+        fontSize: 14,
+        fontWeight: FontWeight.w500,
+      ),
+    );
   }
 
   factory SmoothBottomSheetTheme.adaptive(BuildContext context) {
-    return SmoothBottomSheetTheme.dark();
+    final brightness = Theme.of(context).brightness;
+    return brightness == Brightness.dark
+        ? SmoothBottomSheetTheme.dark()
+        : SmoothBottomSheetTheme.light();
   }
 
   SmoothBottomSheetTheme copyWith({

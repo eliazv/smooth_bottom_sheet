@@ -1,3 +1,9 @@
+## 0.0.2
+
+- Fixed `SmoothBottomSheetTheme.light()` — now returns real light palette (white background, dark text).
+- Fixed `SmoothBottomSheetTheme.adaptive()` — now correctly reads `Theme.of(context).brightness`.
+- `dark()` theme now has proper box shadows for depth.
+
 ## 0.0.1
 
 - First public release of `smooth_bottom_sheet`.
