@@ -11,16 +11,6 @@ Smooth motion, adaptive themes, and a clean API designed for real projects.
 
 Demo GIF is included in `assets/readme` and can be replaced with your latest recorded showcase before release.
 
-## Features
-
-- Modern sheet container with adaptive light/dark theme defaults
-- Smooth entrance animation (slide + fade) with configurable timing/curve
-- Configurable layout (radius, padding, max width)
-- Header API with title, subtitle, leading and trailing widgets
-- Programmatic control via `SmoothBottomSheetController`
-- `showSmoothBottomSheet(...)` helper for fast integration
-- Works on mobile, tablet and desktop layouts
-
 ## Why this package
 
 Many bottom sheet implementations are either too basic or too tied to one app style.
@@ -30,6 +20,16 @@ Many bottom sheet implementations are either too basic or too tied to one app st
 - A production-ready visual baseline
 - Strong customization without boilerplate
 - A reusable architecture to keep UI, config and behavior clean
+
+## Features
+
+- Modern sheet container with adaptive light/dark theme defaults
+- Smooth entrance animation (slide + fade) with configurable timing/curve
+- Configurable layout (radius, padding, max width)
+- Header API with title, subtitle, leading and trailing widgets
+- Programmatic control via `SmoothBottomSheetController`
+- `showSmoothBottomSheet(...)` helper for fast integration
+- Works on mobile, tablet and desktop layouts
 
 ## Installation
 
@@ -90,13 +90,13 @@ See `example/lib/main.dart` for a complete demo with:
 
 ## Author
 
-Created by Elia Zavatta.
+Created by **Elia Zavatta**.
 
 I build production-ready Flutter apps and reusable UI components.
 
-- GitHub: https://github.com/eliazv
-- LinkedIn: https://www.linkedin.com/in/eliazavatta/
-- Email: info@eliazavatta.it
+- GitHub: [github.com/eliazv](https://github.com/eliazv)
+- LinkedIn: [linkedin.com/in/eliazavatta](https://www.linkedin.com/in/eliazavatta/)
+- Email: [info@eliazavatta.it](mailto:info@eliazavatta.it)
 
 ## Related smooth packages
 
