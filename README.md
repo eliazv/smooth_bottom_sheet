@@ -7,9 +7,12 @@ Modern, animated and production-ready bottom sheets for Flutter apps.
 
 Smooth motion, adaptive themes, and a clean API designed for real projects.
 
-![smooth_bottom_sheet demo](assets/readme/smooth_bottom_sheet_demo.gif)
+<p align="center">
+  <img src="assets/readme/sheet-base.gif" width="48%" alt="Smooth Bottom Sheet Base" />
+  <img src="assets/readme/long-fade.gif" width="48%" alt="Smooth Bottom Sheet Long Content" />
+</p>
 
-Demo GIF is included in `assets/readme` and can be replaced with your latest recorded showcase before release.
+Demo GIFs are included in `assets/readme` and show the base component and its behavior with long content.
 
 ## Why this package
 
