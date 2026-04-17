@@ -5,14 +5,31 @@ void main() {
   runApp(const SmoothBottomSheetExampleApp());
 }
 
-class SmoothBottomSheetExampleApp extends StatelessWidget {
+class SmoothBottomSheetExampleApp extends StatefulWidget {
   const SmoothBottomSheetExampleApp({super.key});
+
+  @override
+  State<SmoothBottomSheetExampleApp> createState() =>
+      _SmoothBottomSheetExampleAppState();
+}
+
+class _SmoothBottomSheetExampleAppState
+    extends State<SmoothBottomSheetExampleApp> {
+  ThemeMode _themeMode = ThemeMode.dark;
+
+  void _toggleTheme() {
+    setState(() {
+      _themeMode =
+          _themeMode == ThemeMode.dark ? ThemeMode.light : ThemeMode.dark;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'smooth_bottom_sheet example',
+      themeMode: _themeMode,
       theme: ThemeData(
         colorSchemeSeed: const Color(0xFF0EA5E9),
         useMaterial3: true,
@@ -22,13 +39,22 @@ class SmoothBottomSheetExampleApp extends StatelessWidget {
         useMaterial3: true,
         brightness: Brightness.dark,
       ),
-      home: const _ExampleHomePage(),
+      home: _ExampleHomePage(
+        onToggleTheme: _toggleTheme,
+        themeMode: _themeMode,
+      ),
     );
   }
 }
 
 class _ExampleHomePage extends StatefulWidget {
-  const _ExampleHomePage();
+  final VoidCallback onToggleTheme;
+  final ThemeMode themeMode;
+
+  const _ExampleHomePage({
+    required this.onToggleTheme,
+    required this.themeMode,
+  });
 
   @override
   State<_ExampleHomePage> createState() => _ExampleHomePageState();
@@ -56,15 +82,17 @@ class _ExampleHomePageState extends State<_ExampleHomePage> {
   }
 
   void _openCustomizedSheet() {
+    final isDark = widget.themeMode == ThemeMode.dark;
     showSmoothBottomSheet<void>(
       context: context,
       title: 'Custom style',
       subtitle: 'Theme + layout + animation',
       controller: _controller,
-      theme: SmoothBottomSheetTheme.dark().copyWith(
-        startColor: const Color(0xFF1E1B4B),
-        endColor: const Color(0xFF0B1025),
-        borderColor: const Color(0x66A78BFA),
+      theme: (isDark ? SmoothBottomSheetTheme.dark() : SmoothBottomSheetTheme.light())
+          .copyWith(
+        startColor: isDark ? const Color(0xFF1E1B4B) : const Color(0xFFEEF2FF),
+        endColor: isDark ? const Color(0xFF0B1025) : const Color(0xFFE0E7FF),
+        borderColor: isDark ? const Color(0x66A78BFA) : const Color(0x336366F1),
       ),
       layout: const SmoothBottomSheetLayout(borderRadius: 40, maxWidth: 560),
       animation: const SmoothBottomSheetAnimation(
@@ -75,9 +103,11 @@ class _ExampleHomePageState extends State<_ExampleHomePage> {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
+          Text(
             'This sheet can be closed from inside or by controller.',
-            style: TextStyle(color: Colors.white),
+            style: TextStyle(
+              color: isDark ? Colors.white70 : Colors.black87,
+            ),
           ),
           const SizedBox(height: 16),
           FilledButton(
@@ -115,8 +145,19 @@ class _ExampleHomePageState extends State<_ExampleHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = widget.themeMode == ThemeMode.dark;
+
     return Scaffold(
-      appBar: AppBar(title: const Text('smooth_bottom_sheet example')),
+      appBar: AppBar(
+        title: const Text('smooth_bottom_sheet'),
+        actions: [
+          IconButton(
+            tooltip: isDark ? 'Light mode' : 'Dark mode',
+            onPressed: widget.onToggleTheme,
+            icon: Icon(isDark ? Icons.light_mode : Icons.dark_mode),
+          ),
+        ],
+      ),
       body: Center(
         child: ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: 420),
