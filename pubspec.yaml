@@ -1,6 +1,6 @@
 name: smooth_bottom_sheet
 description: "Modern, animated and highly customizable bottom sheets for Flutter apps."
-version: 0.0.2
+version: 0.0.3
 homepage: https://github.com/eliazv/smooth_bottom_sheet
 repository: https://github.com/eliazv/smooth_bottom_sheet
 issue_tracker: https://github.com/eliazv/smooth_bottom_sheet/issues

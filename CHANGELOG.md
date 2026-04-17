@@ -1,3 +1,8 @@
+## 0.0.3
+
+- Fixed README GIF previews for pub.dev by using absolute GitHub URLs.
+- Removed legacy "Cashew" references from documentation.
+
 ## 0.0.2
 
 - Fixed `SmoothBottomSheetTheme.light()` — now returns real light palette (white background, dark text).
