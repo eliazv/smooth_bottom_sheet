@@ -4,7 +4,7 @@ import 'package:smooth_bottom_sheet/smooth_bottom_sheet.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  testWidgets('shows title and content', (tester) async {
+  testWidgets('shows title and content without handle bar', (tester) async {
     await tester.pumpWidget(
       const MaterialApp(
         home: Scaffold(
@@ -22,7 +22,7 @@ void main() {
 
     expect(find.text('Settings'), findsOneWidget);
     expect(find.text('Bottom sheet content'), findsOneWidget);
-    expect(find.byKey(const Key('smooth_bottom_sheet_handle')), findsOneWidget);
+    expect(find.byKey(const Key('smooth_bottom_sheet_handle')), findsNothing);
   });
 
   testWidgets('can hide handle and close button', (tester) async {

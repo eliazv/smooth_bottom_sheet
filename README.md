@@ -15,7 +15,7 @@ Demo GIF is included in `assets/readme` and can be replaced with your latest rec
 
 - Modern sheet container with adaptive light/dark theme defaults
 - Smooth entrance animation (slide + fade) with configurable timing/curve
-- Configurable layout (radius, padding, max width, handle size)
+- Configurable layout (radius, padding, max width)
 - Header API with title, subtitle, leading and trailing widgets
 - Programmatic control via `SmoothBottomSheetController`
 - `showSmoothBottomSheet(...)` helper for fast integration
@@ -100,8 +100,9 @@ I build production-ready Flutter apps and reusable UI components.
 
 ## Related smooth packages
 
-- smooth_onboarding
-- smooth_paywall
+- [smooth_charts](https://pub.dev/packages/smooth_charts)
+- [smooth_infinite_tab_bar](https://pub.dev/packages/smooth_infinite_tab_bar)
+- [smooth_paywall](https://pub.dev/packages/smooth_paywall)
 
 ## License
 

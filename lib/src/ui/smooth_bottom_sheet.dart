@@ -73,24 +73,9 @@ class _SmoothBottomSheetState extends State<SmoothBottomSheet> {
       widget.showCloseButton ||
       widget.trailing != null;
 
-  Widget _buildHandle(SmoothBottomSheetTheme t) {
-    return Container(
-      key: const Key('smooth_bottom_sheet_handle'),
-      alignment: Alignment.center,
-      padding: const EdgeInsets.only(top: 12, bottom: 8),
-      child: Container(
-        width: widget.layout.handleWidth,
-        height: widget.layout.handleHeight,
-        decoration: BoxDecoration(
-          color: t.handleColor,
-          borderRadius: BorderRadius.circular(99),
-        ),
-      ),
-    );
-  }
-
   Widget _buildHeaderRow(SmoothBottomSheetTheme t) {
-    final closeBtn = widget.trailing ??
+    final closeBtn =
+        widget.trailing ??
         (widget.showCloseButton
             ? IconButton(
                 key: const Key('smooth_bottom_sheet_close_button'),
@@ -158,7 +143,8 @@ class _SmoothBottomSheetState extends State<SmoothBottomSheet> {
       builder: (context, value, child) {
         final cv = Curves.easeOut.transform(value);
         return Opacity(
-          opacity: widget.animation.beginOpacity +
+          opacity:
+              widget.animation.beginOpacity +
               (1 - widget.animation.beginOpacity) * cv,
           child: FractionalTranslation(
             translation: Offset(0, (1 - cv) * widget.animation.beginOffset.dy),
@@ -176,8 +162,7 @@ class _SmoothBottomSheetState extends State<SmoothBottomSheet> {
               bottom: MediaQuery.of(context).viewInsets.bottom,
             ),
             decoration: BoxDecoration(
-              borderRadius:
-                  BorderRadius.vertical(top: Radius.circular(radius)),
+              borderRadius: BorderRadius.vertical(top: Radius.circular(radius)),
               // No top border — shadows provide separation.
               // Left/right/bottom border retained for subtle definition.
               border: Border(
@@ -196,8 +181,7 @@ class _SmoothBottomSheetState extends State<SmoothBottomSheet> {
               boxShadow: t.shadows,
             ),
             child: ClipRRect(
-              borderRadius:
-                  BorderRadius.vertical(top: Radius.circular(radius)),
+              borderRadius: BorderRadius.vertical(top: Radius.circular(radius)),
               child: SafeArea(top: false, child: inner),
             ),
           ),
@@ -214,7 +198,6 @@ class _SmoothBottomSheetState extends State<SmoothBottomSheet> {
       mainAxisSize: _needsScroll ? MainAxisSize.max : MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        if (widget.showHandle) _buildHandle(t),
         if (_hasHeader) _buildHeaderRow(t),
         if (_needsScroll)
           Expanded(
@@ -233,8 +216,7 @@ class _SmoothBottomSheetState extends State<SmoothBottomSheet> {
   // ── Gradient-header layout ─────────────────────────────────────────────────
 
   Widget _buildGradientLayout(SmoothBottomSheetTheme t) {
-    final cp =
-        widget.layout.contentPadding.resolve(Directionality.of(context));
+    final cp = widget.layout.contentPadding.resolve(Directionality.of(context));
 
     final header = Container(
       key: _headerKey,
@@ -254,10 +236,7 @@ class _SmoothBottomSheetState extends State<SmoothBottomSheet> {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          if (widget.showHandle) _buildHandle(t),
-          if (_hasHeader) _buildHeaderRow(t),
-        ],
+        children: [if (_hasHeader) _buildHeaderRow(t)],
       ),
     );
 
