@@ -1,18 +1,36 @@
 import 'package:flutter/material.dart';
 
-/// Visual configuration for [SmoothBottomSheet].
+/// Visual configuration for [SmoothBottomSheet], defining colors, styles, and shadows.
 @immutable
 class SmoothBottomSheetTheme {
+  /// The starting color of the background gradient.
   final Color startColor;
+
+  /// The ending color of the background gradient.
   final Color endColor;
+
+  /// The color of the sheet's border.
   final Color borderColor;
+
+  /// The color of the drag handle (if shown).
   final Color handleColor;
+
+  /// The background color of the default close button.
   final Color closeButtonBackgroundColor;
+
+  /// The icon color of the default close button.
   final Color closeButtonIconColor;
+
+  /// The shadows applied to the bottom sheet.
   final List<BoxShadow> shadows;
+
+  /// The text style for the title in the header.
   final TextStyle titleTextStyle;
+
+  /// The text style for the subtitle in the header.
   final TextStyle subtitleTextStyle;
 
+  /// Creates a [SmoothBottomSheetTheme] with all required properties.
   const SmoothBottomSheetTheme({
     required this.startColor,
     required this.endColor,
@@ -25,6 +43,7 @@ class SmoothBottomSheetTheme {
     required this.subtitleTextStyle,
   });
 
+  /// Default light theme configuration.
   factory SmoothBottomSheetTheme.light() {
     return SmoothBottomSheetTheme(
       startColor: const Color(0xFFFFFFFF),
@@ -54,6 +73,7 @@ class SmoothBottomSheetTheme {
     );
   }
 
+  /// Default dark theme configuration.
   factory SmoothBottomSheetTheme.dark() {
     return SmoothBottomSheetTheme(
       startColor: const Color(0xFF1C1C1C),
@@ -83,6 +103,7 @@ class SmoothBottomSheetTheme {
     );
   }
 
+  /// Returns a themes based on the current [BuildContext] brightness.
   factory SmoothBottomSheetTheme.adaptive(BuildContext context) {
     final brightness = Theme.of(context).brightness;
     return brightness == Brightness.dark
@@ -90,6 +111,7 @@ class SmoothBottomSheetTheme {
         : SmoothBottomSheetTheme.light();
   }
 
+  /// Creates a copy of this theme with the given fields replaced.
   SmoothBottomSheetTheme copyWith({
     Color? startColor,
     Color? endColor,

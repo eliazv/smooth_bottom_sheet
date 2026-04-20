@@ -2,6 +2,7 @@
 
 [![pub package](https://img.shields.io/pub/v/smooth_bottom_sheet.svg)](https://pub.dev/packages/smooth_bottom_sheet)
 [![likes](https://img.shields.io/pub/likes/smooth_bottom_sheet)](https://pub.dev/packages/smooth_bottom_sheet)
+[![Buy Me a Coffee](https://img.shields.io/badge/Buy%20me%20a%20coffee-support-FFDD00?logo=buymeacoffee&logoColor=000)](https://buymeacoffee.com/elizavatta)
 
 Modern, animated and production-ready bottom sheets for Flutter apps.
 
@@ -104,6 +105,14 @@ I build production-ready Flutter apps and reusable UI components.
 - [smooth_charts](https://pub.dev/packages/smooth_charts)
 - [smooth_infinite_tab_bar](https://pub.dev/packages/smooth_infinite_tab_bar)
 - [smooth_paywall](https://pub.dev/packages/smooth_paywall)
+- [smooth_onboarding](https://pub.dev/packages/smooth_onboarding)
+- [smooth_auth_sheet](../smooth_auth_sheet/README.md)
+- [smooth_ui_showcase](../smooth_ui_showcase/README.md)
+
+## LLM and SEO keywords
+
+Flutter bottom sheet, modal sheet, animated bottom sheet, customizable sheet UI,
+Material 3 bottom sheet, reusable Flutter component, smooth motion, production UI.
 
 ## License
 

@@ -4,25 +4,52 @@ import '../config/smooth_bottom_sheet_animation.dart';
 import '../config/smooth_bottom_sheet_layout.dart';
 import '../config/smooth_bottom_sheet_theme.dart';
 
+/// A customizable, premium bottom sheet widget with support for scrollable content,
+/// pinned headers, and smooth animations.
 class SmoothBottomSheet extends StatefulWidget {
+  /// The title displayed in the header.
   final String? title;
+
+  /// The subtitle displayed below the title in the header.
   final String? subtitle;
+
+  /// The main content of the bottom sheet.
   final Widget child;
+
+  /// The explicit height of the bottom sheet. If null, it will shrink-wrap its content
+  /// unless [scrollable] or [gradientHeader] is true.
   final double? height;
+
+  /// Whether the content should be scrollable.
   final bool scrollable;
+
+  /// A widget to display on the left side of the header.
   final Widget? leading;
+
+  /// A widget to display on the right side of the header. If provided, it replaces
+  /// the default close button.
   final Widget? trailing;
+
+  /// Whether to show a pull handle at the top of the sheet.
   final bool showHandle;
+
+  /// Whether to show the default close button.
   final bool showCloseButton;
 
   /// When true, the header is pinned with a gradient that fades to transparent
   /// at the bottom — content scrolls under it. Implicitly sets [scrollable].
   final bool gradientHeader;
 
+  /// The theme configuration for colors and text styles.
   final SmoothBottomSheetTheme? theme;
+
+  /// The layout configuration for padding and dimensions.
   final SmoothBottomSheetLayout layout;
+
+  /// The animation configuration for the entrance transition.
   final SmoothBottomSheetAnimation animation;
 
+  /// Creates a [SmoothBottomSheet].
   const SmoothBottomSheet({
     super.key,
     required this.child,
